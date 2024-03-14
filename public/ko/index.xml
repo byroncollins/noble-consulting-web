@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Noble Consulting | 한글</title>
+    <link>http://localhost:1313/ko/</link>
+      <atom:link href="http://localhost:1313/ko/index.xml" rel="self" type="application/rss+xml" />
+    <description>Noble Consulting</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>ko</language><lastBuildDate>Tue, 24 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/logo.svg</url>
+      <title>Noble Consulting</title>
+      <link>http://localhost:1313/ko/</link>
+    </image>
+    
+    <item>
+      <title>Privacy</title>
+      <link>http://localhost:1313/ko/privacy/</link>
+      <pubDate>Tue, 12 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/privacy/</guid>
+      <description>&lt;p&gt;We take data privacy very seriously, so we make sure not to store anything we do not need. We do not have any tracking service, no cookies or anything like that. If you decide to use the contact form or the newsletter sign up this information will be stored on Netlify, a service we use to host this website. You can approach us any time to have your data removed or simply retrieve information about what information we did store.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Terms of Service</title>
+      <link>http://localhost:1313/ko/terms/</link>
+      <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/terms/</guid>
+      <description>&lt;p&gt;Add your company legal terms here&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

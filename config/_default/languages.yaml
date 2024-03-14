@@ -6,8 +6,15 @@
 en:
   languageCode: en-us
   # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
-  #contentDir: content/en
+  contentDir: content/en
+  weight: 1
 
+ko:
+  languageCode: ko
+  contentDir: content/ko
+  languageName: 한글
+  title: 한글
+  weight: 2
 # Uncomment the lines below to configure your website in a second language.
 #zh:
 #  languageCode: zh-Hans
