@@ -17,7 +17,7 @@ sections:
         url: /#contact
         icon: rocket-launch
       secondary_action:
-        text: Export Consultancy
+        text: 수출 컨설팅
         url: /#export-consultancy
       announcement:
         text: "무료 초기 상담을 받으려면 연락하세요"
@@ -55,7 +55,7 @@ sections:
       title: "문의하기"
       text: |
           
-          {{< contact_form id="contact-form" placeholder_name="이름" placeholder_email="이메일 주소" placeholder_message="메시지" button_label="Send ✉️">}}
+          {{< contact_form id="contact-form" placeholder_name="이름" placeholder_email="이메일 주소" placeholder_message="메시지" button_label="보내기 ✉️">}}
     design:
       css_class: "bg-gray-100 dark:bg-gray-900"
           
