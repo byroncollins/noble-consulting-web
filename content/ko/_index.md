@@ -68,7 +68,7 @@ sections:
       # Add an SVG image to the `assets/media/icons/` folder and reference it in the `icon` field below
       buttons:
         - text: E-mail Us
-          url: 'mailto:sun-seona.ku@live.com'
+          url: 'mailto:seona.ku@nobleconsulting.kr'
           icon: at-symbol
         - text: Connect with us on LinkedIn
           icon: brands/linkedin
