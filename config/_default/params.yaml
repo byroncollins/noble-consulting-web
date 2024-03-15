@@ -25,6 +25,7 @@ marketing:
   verification:
     google: ''
     baidu: ''
+    naver: '893b3b1f8090eb906bab54d31e56322b6291b5fe'
 
 # Site header
 header:
