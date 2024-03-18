@@ -11,16 +11,17 @@ const recipients = [
   }
 ];
 
+const sender = {
+  email: "website-notifications@nobleconsulting.kr",
+  name: "Website Notification",
+};
+
+
 exports.handler = async function (event, context, callback) {
   // Parse the JSON text received.
   const { name, email, message } = JSON.parse(event.body);
 
   console.log(`Recieved a submission: ${JSON.stringify(JSON.parse(event.body))}`);
-
-  const sender = {
-    email: "website-notifications@nobleconsulting.kr",
-    name: "Website Notification",
-  };
 
   const headers = new Headers()
   headers.append("Content-Type", "application/json")
@@ -48,7 +49,7 @@ client
     to: recipients,
     subject: "Submission Form",
     html: html,
-    category: "Integration Test",
+    category: "Submission",
   })
   .then(console.log, console.error);
 
