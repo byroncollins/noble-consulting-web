@@ -8,7 +8,7 @@ exports.handler = async function(event, context) {
 
     // Parse the JSON text received.
     console.log(JSON.stringify(JSON.parse(event.body)));
-    const { name, email, message } = JSON.parse(event.body).payload;
+    const { name, email, message } = JSON.parse(event.body).payload.data;
 
     console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
 
