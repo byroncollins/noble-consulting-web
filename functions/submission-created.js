@@ -1,15 +1,11 @@
 require('dotenv').config()
 const nodemailer = require('nodemailer');
 
-console.log(process.env.TOKEN);
-
 exports.handler = async function(event, context) {
   try {
 
     // Parse the JSON text received.
-    console.log(JSON.stringify(JSON.parse(event.body)));
     const { name, email, message } = JSON.parse(event.body).payload.data;
-
     console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
 
     // Send email with form data
@@ -33,7 +29,7 @@ async function sendEmail(name, email, message) {
   try {
     // Configure nodemailer with your email service
     const TOKEN = process.env.TOKEN;
-    console.log(`Your token is ${process.env.TOKEN}`); // 8626
+    const RCPT  = process.env.RCPT;
     const  transport = nodemailer.createTransport({
         host: "live.smtp.mailtrap.io",
         port: 587,
@@ -53,7 +49,7 @@ async function sendEmail(name, email, message) {
     // Email content
     const mailOptions = {
       from: 'website-notifications@nobleconsulting.kr',
-      to: 'byron_collins+nobleconsulting@hotmail.com',
+      to: RCPT,
       subject: 'New Form Submission',
       html: html
     };
