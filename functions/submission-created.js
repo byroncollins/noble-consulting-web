@@ -7,6 +7,7 @@ exports.handler = async function(event, context) {
   try {
 
     // Parse the JSON text received.
+    console.log(JSON.stringify(JSON.parse(event.body)));
     const { name, email, message } = JSON.parse(event.body);
 
     // Send email with form data
