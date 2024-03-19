@@ -1,76 +1,63 @@
-const { MailtrapClient } = require("mailtrap");
-const https = require("https");
+require('dotenv').config()
+const nodemailer = require('nodemailer');
 
-const TOKEN = process.env.TOKEN;
-const ENDPOINT = "https://send.api.mailtrap.io/";
+console.log(process.env.TOKEN);
 
-const client = new MailtrapClient({ endpoint: ENDPOINT, token: TOKEN });
+exports.handler = async function(event, context) {
+  try {
 
-const recipients = [
-  {
-    email: "byronc@nobleconsulting.kr",
+    // Parse the JSON text received.
+    const { name, email, message } = JSON.parse(event.body);
+
+    // Send email with form data
+    await sendEmail(name, email ,message);
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Email sent successfully' })
+    };
+  } catch (error) {
+    console.error('Error sending email:', error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Error sending email' })
+    };
   }
-];
-
-const sender = {
-  email: "website-notifications@nobleconsulting.kr",
-  name: "Website Notification",
 };
 
+// Function to send email
+async function sendEmail(name, email, message) {
+  try {
+    // Configure nodemailer with your email service
+    const TOKEN = process.env.TOKEN;
+    console.log(`Your token is ${process.env.TOKEN}`); // 8626
+    const  transport = nodemailer.createTransport({
+        host: "live.smtp.mailtrap.io",
+        port: 587,
+        auth: {
+          user: "api",
+          pass: "${TOKEN}"
+        }
+      });    
 
-exports.handler = async function (event, context, callback) {
-  // Parse the JSON text received.
-  const { name, email, message } = JSON.parse(event.body);
-
-  const data = JSON.stringify(JSON.parse(event.body));
-
-  console.log(`Recieved a submission: ${JSON.stringify(JSON.parse(event.body))}`);
-
-  const options = {
-    host: "eog1wjkob2icej2.m.pipedream.net",
-    port: 443,
-    path: "/",
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-      "Content-Length": data.length,
-    },    
-    body: JSON.stringify(event.body),
-  }
-  
-  const req = https.request(options, (res) => {
-      console.log('statusCode:', res.statusCode);
-      console.log('headers:', res.headers);
-    
-      res.on('data', (d) => {
-        process.stdout.write(d);
-      });
-    });
-
-  req.write(data);
-
-  req.on('error', (e) => {
-    console.error(e);
-  });
-
-  req.end();
-
-  // Build an HTML string to represent the body of the email to be sent.
-  const html = `
-  <div style="margin: 20px auto;">Name: ${name}</div>
-  <div style="margin: 20px auto;">Email: ${email}</div>
-  <div style="margin: 20px auto;">Message: ${message}</div>
+    // Build an HTML string to represent the body of the email to be sent.
+    const html = `
+    <div style="margin: 20px auto;">Name: ${name}</div>
+    <div style="margin: 20px auto;">Email: ${email}</div>
+    <div style="margin: 20px auto;">Message: ${message}</div>
     `;
 
-client
-  .send({
-    from: sender,
-    to: recipients,
-    subject: "Submission Form",
-    html: html,
-    category: "Submission",
-  })
-  .then(console.log, console.error);
+    // Email content
+    const mailOptions = {
+      from: 'website-notifications@nobleconsulting.kr',
+      to: 'byron_collins+nobleconsulting@hotmail.com',
+      subject: 'New Form Submission',
+      html: html
+    };
 
+    // Send email
+    await transport.sendMail(mailOptions);
+  } catch (error) {
+    throw error;
+  }
 }
