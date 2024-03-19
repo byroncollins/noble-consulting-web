@@ -36,7 +36,7 @@ async function sendEmail(name, email, message) {
         port: 587,
         auth: {
           user: "api",
-          pass: "${TOKEN}"
+          pass: TOKEN
         }
       });    
 
